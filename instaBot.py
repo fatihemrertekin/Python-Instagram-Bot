@@ -95,6 +95,27 @@ class InstaBot:
 
         self.mesajOlustur("Scroll işlemi tamamlandı.", 2)
 
+    def sayfaScrollDown(self):
+        jsKomut = """
+        sayfa = document.querySelector("html");
+        sayfa.scrollTo(0,sayfa.scrollHeight);
+        var sayfaSonu = sayfa.scrollHeight;
+        return sayfaSonu;
+        """
+        self.browser.implicitly_wait(35)
+        sayfaSonu = self.browser.execute_script(jsKomut)
+
+        for i in range(10):
+            son = sayfaSonu
+            time.sleep(1)
+            sayfaSonu = self.browser.execute_script(jsKomut)
+            self.mesajOlustur(f"{i}. Scroll", 2)
+            if son == sayfaSonu:
+                break
+
+        self.mesajOlustur("Scroll işlemi tamamlandı.", 2)
+
+
     def girisYap(self):
         self.mesajOlustur("🔄 Tarayıcı ekranı açılıyor...", 4)
         self.birSaniyeUyut()
@@ -219,6 +240,52 @@ class InstaBot:
                 self.mesajOlustur(f"Toplam {sum - 1} kişi takipten çıkıldı.", 3)
                 break
 
+    
+    def etiketeGoreBeğen(self):
+        self.mesajOlustur("🔄 Etikete göre post beğenme işlemi başlatılıyor...", 4)
+        self.birSaniyeUyut()
+
+        self.mesajOlustur("Hangi etiket için arama yapmak istiyorsunuz ?", 3)
+        etiketAdi = input()
+
+        self.mesajOlustur("Kaç tane gönderi beğenmek istiyorsunuz ? (Tavsiye edilen günlük max değer: 50)", 3)
+        gonderiSayisi = int(input())
+
+        self.mesajOlustur(f"🔄 {etiketAdi} adlı etiketiyle ilgili gönderiler açılıyor...", 4)
+        self.browser.get(f"https://www.instagram.com/explore/tags/{etiketAdi}/")
+        self.ucSaniyeUyut()
+        
+        InstaBot.sayfaScrollDown(self)
+
+        self.browser.implicitly_wait(35)
+        dialog = self.browser.find_element_by_css_selector("._aao7")
+        gonderiler = dialog.find_elements_by_tag_name("a")
+
+        counter = 1
+        sum = 0
+        for gonderi in gonderiler:
+            if counter <= gonderiSayisi:
+                gonderi.click()
+                self.ikiSaniyeUyut()
+                self.browser.find_element_by_css_selector("span[class='_aamw'] button[type='button']").click()
+                self.birSaniyeUyut()
+                self.browser.back()
+                self.mesajOlustur(f"{counter}. Gönderi beğenildi. ✅", 2)
+                self.ucSaniyeUyut()
+                sum = counter
+                counter += 1
+
+            else:
+                self.mesajOlustur(f"Toplam {sum} tane gönderi beğenildi.", 3)
+                break
+
+            if counter == 20 or counter == 40 or counter == 60 or counter == 80 or counter == 100:
+                self.mesajOlustur("Ban yememek için program 30 saniye beklemede. 🔄", 4)
+                self.otuzSaniyeUyut() # instagramdan ban yememek için her 20 kişide bir 30 saniye bekletme kodu.
+
+            if counter == 10 or counter == 30 or counter == 50 or counter == 70 or counter == 90:
+                self.mesajOlustur("Ban yememek için program 10 saniye beklemede. 🔄", 4)
+                self.onSaniyeUyut() # instagramdan ban yememek için n'inci kişilere gelindiğinde 10 saniye bekletme kodu.
 
     def menu(self):
         print("")
@@ -227,6 +294,7 @@ class InstaBot:
 
         self.mesajOlustur("1- Kullanıcı adına göre arama ile sayfanın takipçilerini takip etme.", 3) # İşlem listesi.
         self.mesajOlustur("2- Takip edilen kişileri takipten çıkarma.", 3)
+        self.mesajOlustur("3- Girilen etikete göre gönderi beğenme.", 3)
         
         self.mesajOlustur("Seçiminiz (örnek: 1): ", 4)
 
@@ -237,6 +305,9 @@ class InstaBot:
         elif secim == 2:
             instaCMD.girisYap()
             instaCMD.takiptenCik()
+        elif secim == 3:
+            instaCMD.girisYap()
+            instaCMD.etiketeGoreBeğen()
 
 print(colored("Kullanıcı adınızı girin:", "red"))
 username = input()
