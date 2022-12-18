@@ -241,7 +241,7 @@ class InstaBot:
                 break
 
     
-    def etiketeGoreBeğen(self):
+    def etiketeGoreBegen(self):
         self.mesajOlustur("🔄 Etikete göre post beğenme işlemi başlatılıyor...", 4)
         self.birSaniyeUyut()
 
@@ -307,7 +307,7 @@ class InstaBot:
             instaCMD.takiptenCik()
         elif secim == 3:
             instaCMD.girisYap()
-            instaCMD.etiketeGoreBeğen()
+            instaCMD.etiketeGoreBegen()
 
 print(colored("Kullanıcı adınızı girin:", "red"))
 username = input()
