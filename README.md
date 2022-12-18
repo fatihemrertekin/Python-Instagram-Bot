@@ -44,7 +44,7 @@ python -m pip install -r .\requirements.txt
 :small_blue_diamond: Kullanıcıdan bilgi girişi yapılması, mesaj gönderimleri vb. yönergeler ile program sizi yönlendirecektir.
 
 ```
-python instagram.py
+python instaBot.py
 ```
 
 
