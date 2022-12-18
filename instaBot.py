@@ -75,41 +75,46 @@ class InstaBot:
     def birSaatUyut(self):
         time.sleep(3600)
 
-    def scrollDown(self):
+    def scrollDown(self,takipSayisi):
         jsKomut = """
         sayfa = document.querySelector("._aano");
         sayfa.scrollTo(0,sayfa.scrollHeight);
         var sayfaSonu = sayfa.scrollHeight;
         return sayfaSonu;
         """
+        takipSayisinaGoreScroll = int(takipSayisi / 12) + 2
         self.browser.implicitly_wait(35)
         sayfaSonu = self.browser.execute_script(jsKomut)
 
-        for i in range(10):
+        for i in range(takipSayisinaGoreScroll):
             son = sayfaSonu
-            time.sleep(1)
+            self.ikiSaniyeUyut()
+            self.browser.implicitly_wait(35)
             sayfaSonu = self.browser.execute_script(jsKomut)
-            self.mesajOlustur(f"{i}. Scroll", 2)
+            self.mesajOlustur(f"{i+1}. Scroll", 2)
             if son == sayfaSonu:
                 break
 
         self.mesajOlustur("Scroll işlemi tamamlandı.", 2)
 
-    def sayfaScrollDown(self):
+    def sayfaScrollDown(self,gonderiSayisi):
         jsKomut = """
         sayfa = document.querySelector("html");
         sayfa.scrollTo(0,sayfa.scrollHeight);
         var sayfaSonu = sayfa.scrollHeight;
         return sayfaSonu;
         """
+        gonderiSayisinaGoreScroll = int(gonderiSayisi / 4) + 2
+
         self.browser.implicitly_wait(35)
         sayfaSonu = self.browser.execute_script(jsKomut)
 
-        for i in range(10):
+        for i in range(gonderiSayisinaGoreScroll):
             son = sayfaSonu
-            time.sleep(1)
+            self.ikiSaniyeUyut()
+            self.browser.implicitly_wait(35)
             sayfaSonu = self.browser.execute_script(jsKomut)
-            self.mesajOlustur(f"{i}. Scroll", 2)
+            self.mesajOlustur(f"{i+1}. Scroll", 2)
             if son == sayfaSonu:
                 break
 
@@ -159,7 +164,7 @@ class InstaBot:
         self.browser.find_element_by_xpath("/html/body/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/section/main/div/header/section/ul/li[2]/a").click() # takip edilecek kişinin takipçilerinin sayısının yazdığı link
         self.dortSaniyeUyut()
 
-        InstaBot.scrollDown(self) # Açılan penceredeki bütün elemanları yüklemek için scroll barı aşağı kaydıran kod.
+        InstaBot.scrollDown(self,takipSayisi) # Açılan penceredeki bütün elemanları yüklemek için scroll barı aşağı kaydıran kod.
 
         dialog = self.browser.find_element_by_xpath("/html/body/div[2]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[2]") # takipçilerin konteynırı
 
@@ -177,11 +182,9 @@ class InstaBot:
 
             elif takipEt.text == "İstek Gönderildi":
                 self.mesajOlustur("Zaten istek göndermiştin. Yanıt bekleniyor... 🔄", 4)
-                self.birSaniyeUyut()
 
             else:
                 self.mesajOlustur("Zaten takiptesin. ⭕", 1)
-                self.birSaniyeUyut()
                 
             if counter == 20 or counter == 40 or counter == 60 or counter == 80 or counter == 100:
                 self.mesajOlustur("Ban yememek için program 30 saniye beklemede. 🔄", 4)
@@ -255,7 +258,7 @@ class InstaBot:
         self.browser.get(f"https://www.instagram.com/explore/tags/{etiketAdi}/")
         self.ucSaniyeUyut()
         
-        InstaBot.sayfaScrollDown(self)
+        InstaBot.sayfaScrollDown(self,gonderiSayisi)
 
         self.browser.implicitly_wait(35)
         dialog = self.browser.find_element_by_css_selector("._aao7")
