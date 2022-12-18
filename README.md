@@ -26,7 +26,7 @@
 
 
 ## Yapılandırma Ayarları
- :gear:	 Proje webdriver olarak Google Chrome tarayıcısını kullanmaktadır.Bu yüzden Chrome'un kurulu olması gerekmektedir.  
+ :gear:	 Proje webdriver olarak Google Chrome tarayıcısını kullanmaktadır. Bu yüzden Chrome'un kurulu olması gerekmektedir.  
  :gear:	 Chrome'un kullanılabilmesi için Chrome sürümünüzü destekleyen chrome webdriver'ı [webdriver](https://chromedriver.chromium.org/downloads) indirilmeli ve indirilen webdriver program'ın bulunduğu klasör ile aynı dizinde bulunmalıdır.
 
 
