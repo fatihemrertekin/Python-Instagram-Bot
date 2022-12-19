@@ -16,7 +16,7 @@
 <br>
 :large_blue_circle: **İstenilen miktarda takip edilen kişileri takipten çıkarma.**.
 <br>
-:large_blue_circle: \*_Girilen etiket adına göre istenilen miktarda gönderi beğenme._
+:large_blue_circle: **Girilen etiket adına göre istenilen miktarda gönderi beğenme.**
 <br>
 
 ## Diğer Özellikler
