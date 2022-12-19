@@ -12,8 +12,9 @@
 
 ## Özellikler
 
-:large_blue_circle: **Kullanıcı adına göre arama yaparak aranan kullanıcının takipçilerini istenilen miktarda takip etme**  
+:large_blue_circle: **Kullanıcı adına göre arama yaparak aranan kullanıcının takipçilerini istenilen miktarda takip etme**
 :large_blue_circle: **İstenilen miktarda takip edilen kişileri takipten çıkarma**
+<br>
 :large_blue_circle: **Girilen etiket adına göre istenilen miktarda gönderi beğenme.**
 
 ## Diğer Özellikler
