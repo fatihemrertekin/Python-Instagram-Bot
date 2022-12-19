@@ -1,11 +1,11 @@
 import time
 from termcolor import colored
 from selenium import webdriver
+from pygame import mixer
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 
 class InstaBot:
     def __init__(self,username,password):
@@ -327,6 +327,10 @@ class InstaBot:
             else:
                 self.mesajOlustur("Programdan çıkış yapılıyor... 🔄", 4)
                 break
+
+mixer.init() # mikser örneğini başlat
+mixer.music.load('morningTime.mp3') # müzik yükler, mp3 dosyası da olabilir.
+mixer.music.play() # müziği çalar #Todo: Yazıları Seslendirme İşlemi Yapılacak !
 
 print(colored("Kullanıcı adınızı girin:", "red"))
 username = input()
