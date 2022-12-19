@@ -329,7 +329,7 @@ class InstaBot:
                 break
 
 mixer.init() # mikser örneğini başlat
-mixer.music.load('morningTime.mp3') # müzik yükler, mp3 dosyası da olabilir.
+mixer.music.load('acilisSes.mp3') # müzik yükler, mp3 dosyası da olabilir.
 mixer.music.play() # müziği çalar #Todo: Yazıları Seslendirme İşlemi Yapılacak !
 
 print(colored("Kullanıcı adınızı girin:", "red"))
