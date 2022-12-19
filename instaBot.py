@@ -185,11 +185,11 @@ class InstaBot:
             else:
                 self.mesajOlustur("Zaten takiptesin. ⭕", 1)
                 
-            if counter == 20 or counter == 40 or counter == 60 or counter == 80 or counter == 100:
+            if counter == 21 or counter == 41 or counter == 61 or counter == 81 or counter == 101:
                 self.mesajOlustur("Ban yememek için program 30 saniye beklemede. 🔄", 4)
                 self.otuzSaniyeUyut() # instagramdan ban yememek için her 20 kişide bir 30 saniye bekletme kodu.
 
-            if counter == 10 or counter == 30 or counter == 50 or counter == 70 or counter == 90:
+            if counter == 11 or counter == 31 or counter == 51 or counter == 71 or counter == 91:
                 self.mesajOlustur("Ban yememek için program 10 saniye beklemede. 🔄", 4)
                 self.onSaniyeUyut() # instagramdan ban yememek için n'inci kişilere gelindiğinde 10 saniye bekletme kodu.
 
@@ -230,11 +230,11 @@ class InstaBot:
                 counter = counter + 1
                 sum = counter
                 
-            if counter == 20 or counter == 40 or counter == 60 or counter == 80 or counter == 100:
+            if counter == 21 or counter == 41 or counter == 61 or counter == 81 or counter == 101:
                 self.mesajOlustur("Ban yememek için program 30 saniye beklemede. 🔄", 4)
                 self.otuzSaniyeUyut() # instagramdan ban yememek için her 20 kişide bir 30 saniye bekletme kodu.
 
-            if counter == 10 or counter == 30 or counter == 50 or counter == 70 or counter == 90:
+            if counter == 11 or counter == 31 or counter == 51 or counter == 71 or counter == 91:
                 self.mesajOlustur("Ban yememek için program 10 saniye beklemede. 🔄", 4)
                 self.onSaniyeUyut() # instagramdan ban yememek için n'inci kişilere gelindiğinde 10 saniye bekletme kodu.
 
@@ -258,7 +258,7 @@ class InstaBot:
 
         pixelSayac = 1150
         InstaBot.sayfaScrollDown(self,pixelSayac)
-        pixelSayac = pixelSayac + 1000
+        pixelSayac = pixelSayac + 870
 
         self.browser.implicitly_wait(35)
         dialog = self.browser.find_element_by_css_selector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > main:nth-child(2) > article:nth-child(2) > div:nth-child(3)")
@@ -283,15 +283,15 @@ class InstaBot:
                 self.mesajOlustur(f"Toplam {sum} tane gönderi beğenildi.", 3)
                 break
 
-            if counter == 9 or counter == 18 or counter == 27 or counter == 36 or counter == 45 or counter == 54:
+            if counter == 10 or counter == 19 or counter == 28 or counter == 37 or counter == 46 or counter == 55:
                 InstaBot.sayfaScrollDown(self,pixelSayac)
-                pixelSayac = pixelSayac + 1000
+                pixelSayac = pixelSayac + 870
 
-            if counter == 20 or counter == 40 or counter == 60 or counter == 80 or counter == 100:
+            if counter == 21 or counter == 41 or counter == 61 or counter == 81 or counter == 101:
                 self.mesajOlustur("Ban yememek için program 30 saniye beklemede. 🔄", 4)
                 self.otuzSaniyeUyut() # instagramdan ban yememek için her 20 kişide bir 30 saniye bekletme kodu.
 
-            if counter == 10 or counter == 30 or counter == 50 or counter == 70 or counter == 90:
+            if counter == 11 or counter == 31 or counter == 51 or counter == 71 or counter == 91:
                 self.mesajOlustur("Ban yememek için program 10 saniye beklemede. 🔄", 4)
                 self.onSaniyeUyut() # instagramdan ban yememek için n'inci kişilere gelindiğinde 10 saniye bekletme kodu.
 
@@ -327,8 +327,6 @@ class InstaBot:
             else:
                 self.mesajOlustur("Programdan çıkış yapılıyor... 🔄", 4)
                 break
-
-            
 
 print(colored("Kullanıcı adınızı girin:", "red"))
 username = input()
