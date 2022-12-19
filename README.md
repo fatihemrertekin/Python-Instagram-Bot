@@ -12,9 +12,12 @@
 
 ## Özellikler
 
-:large_blue_circle: **Kullanıcı adına göre arama yaparak aranan kullanıcının takipçilerini istenilen miktarda takip etme**  
+:large_blue_circle: **Kullanıcı adına göre arama yaparak aranan kullanıcının takipçilerini istenilen miktarda takip etme**
+<br>
 :large_blue_circle: **İstenilen miktarda takip edilen kişileri takipten çıkarma**
+<br>
 :large_blue_circle: **Girilen etiket adına göre istenilen miktarda gönderi beğenme.**
+<br>
 
 ## Diğer Özellikler
 
@@ -50,10 +53,14 @@ python instaBot.py
 
 ### Notlar
 
-:small_blue_diamond: işlemlerde hesabınızın engellenmemesi için işlem süre aralıkları uzun süreler olarak ayarlanmıştır.  
+:small_blue_diamond: işlemlerde hesabınızın engellenmemesi için işlem süre aralıkları uzun süreler olarak ayarlanmıştır.
+<br>
 :small_blue_diamond: Yapılan işlemler için belirlenen işlem süreleri "birSaniyeUyut(), ikiSaniyeUyut()" gibi metotlar ile tanımlanmış olup, değiştirilmek istendiğinde metot içerisindeki time.sleep(x) fonsiyonunun x parametresine saniye cinsinden bir değer vererek güncelleme yapılabilir.
-:small_blue_diamond: Sadece Windows işletim sisteminde test edilmiştir.  
+<br>
+:small_blue_diamond: Sadece Windows işletim sisteminde test edilmiştir.
+<br>
 :small_blue_diamond: Python versiyonu: 3.9.5
+<br>
 
 ### Kullanılan Teknolojiler
 
