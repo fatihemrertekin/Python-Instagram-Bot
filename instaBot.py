@@ -97,19 +97,18 @@ class InstaBot:
 
         self.mesajOlustur("Scroll işlemi tamamlandı.", 2)
 
-    def sayfaScrollDown(self,gonderiSayisi):
-        jsKomut = """
+    def sayfaScrollDown(self,pixelSayac):
+        jsKomut = f"""
         sayfa = document.querySelector("html");
-        sayfa.scrollTo(0,sayfa.scrollHeight);
+        sayfa.scrollTo(0,{pixelSayac});
         var sayfaSonu = sayfa.scrollHeight;
         return sayfaSonu;
         """
-        gonderiSayisinaGoreScroll = int(gonderiSayisi / 4) + 15
 
         self.browser.implicitly_wait(35)
         sayfaSonu = self.browser.execute_script(jsKomut)
 
-        for i in range(gonderiSayisinaGoreScroll):
+        for i in range(1):
             son = sayfaSonu
             self.ikiSaniyeUyut()
             self.browser.implicitly_wait(35)
@@ -197,7 +196,7 @@ class InstaBot:
             if counter == takipSayisi + 1:
                 self.mesajOlustur(f"Toplam {sum - 1} kişi takip edildi.", 3)
                 break
-
+        
     def takiptenCik(self):
         self.mesajOlustur("🔄 Takipten çıkma işlemi başlatılıyor...", 4)
         self.birSaniyeUyut()
@@ -217,7 +216,7 @@ class InstaBot:
         dialog = self.browser.find_element_by_css_selector("._aano") # takipçilerin konteynırı
 
         takiptenCikButtonlari = dialog.find_elements_by_css_selector("button") # scrool yapılmadan önce takipçilerin sayısı
-
+        
         counter = 1
         sum = 0
         for takiptenCik in takiptenCikButtonlari:
@@ -256,8 +255,10 @@ class InstaBot:
         self.mesajOlustur(f"🔄 {etiketAdi} adlı etiketiyle ilgili gönderiler açılıyor...", 4)
         self.browser.get(f"https://www.instagram.com/explore/tags/{etiketAdi}/")
         self.ucSaniyeUyut()
-        
-        InstaBot.sayfaScrollDown(self,gonderiSayisi)
+
+        pixelSayac = 1150
+        InstaBot.sayfaScrollDown(self,pixelSayac)
+        pixelSayac = pixelSayac + 1000
 
         self.browser.implicitly_wait(35)
         dialog = self.browser.find_element_by_css_selector("body > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > section:nth-child(1) > main:nth-child(2) > article:nth-child(2) > div:nth-child(3)")
@@ -282,6 +283,10 @@ class InstaBot:
                 self.mesajOlustur(f"Toplam {sum} tane gönderi beğenildi.", 3)
                 break
 
+            if counter == 9 or counter == 18 or counter == 27 or counter == 36 or counter == 45 or counter == 54:
+                InstaBot.sayfaScrollDown(self,pixelSayac)
+                pixelSayac = pixelSayac + 1000
+
             if counter == 20 or counter == 40 or counter == 60 or counter == 80 or counter == 100:
                 self.mesajOlustur("Ban yememek için program 30 saniye beklemede. 🔄", 4)
                 self.otuzSaniyeUyut() # instagramdan ban yememek için her 20 kişide bir 30 saniye bekletme kodu.
@@ -289,7 +294,6 @@ class InstaBot:
             if counter == 10 or counter == 30 or counter == 50 or counter == 70 or counter == 90:
                 self.mesajOlustur("Ban yememek için program 10 saniye beklemede. 🔄", 4)
                 self.onSaniyeUyut() # instagramdan ban yememek için n'inci kişilere gelindiğinde 10 saniye bekletme kodu.
-
 
     def menu(self):
         print("")
@@ -321,6 +325,7 @@ class InstaBot:
                 print("")
                 continue
             else:
+                self.mesajOlustur("Programdan çıkış yapılıyor... 🔄", 4)
                 break
 
             
