@@ -326,6 +326,7 @@ class InstaBot:
                 continue
             else:
                 self.mesajOlustur("Programdan çıkış yapılıyor... 🔄", 4)
+                self.browser.quit()
                 break
 
 mixer.init() # mikser örneğini başlat
