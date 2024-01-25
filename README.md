@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/fatihemrertekin/Python-Instagram-Bot">
-    <img src="https://github.com/fatihemrertekin/Python-Instagram-Bot/blob/main/InstaBot.png?raw=true" alt="Instagram Bot" width="300">
+    <img src="https://github.com/fatihemrertekin/Python-Instagram-Bot/blob/main/insta_bot.png?raw=true" alt="Instagram Bot" width="300">
   </a>
 </p>
 
