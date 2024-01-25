@@ -124,7 +124,6 @@ class InstagramUser(User, InstagramActions):
         self.print_message("# ==============================================================================", 2)
         self.print_message("# Author                 :Fatih Emre Ertekin", 2)
         self.print_message("# Department             :Computer Engineering", 2)
-        self.print_message("# Student ID             :190303016", 2)
         self.print_message("# App Version            :1.0", 2)
         self.print_message("# Python Version         :3.12.0", 2)
         self.print_message("# Date                   :25.12.2023", 2)
